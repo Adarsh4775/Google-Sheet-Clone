@@ -1,0 +1,141 @@
+* {
+    border: 0;
+    margin: 0;
+}
+
+#root {
+    width: 100vw;
+    height: 75vh;
+    margin-top: 20px;
+    overflow-x: scroll;
+}
+
+#header {
+    display: flex;
+    position: sticky;
+    top: 0;
+}
+
+.head-cell {
+    min-width: 200px;
+    height: 30px;
+    border: 0.1px solid #C4C7C5;
+    text-align: center;
+    font-weight: 900;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head-cell:first-child {
+    background-color: rgb(246, 7, 7);
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    min-width: 40px;
+}
+
+#body {
+    display: grid;
+    grid-template-columns: 42px 10fr;
+}
+
+#SNO {
+    position: sticky;
+    left: 0;
+}
+
+.sno-cell {
+    min-width: 20px;
+    height: 30px;
+    border: 0.1px solid #C4C7C5;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    min-width: 100px;
+    height: 30px;
+    border: 1px solid #C4C7C5;
+}
+
+.column {
+    min-width: 200px;
+    height: 30px;
+    border: 0.1px solid #C4C7C5;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column:focus {
+    outline: 2.4px solid green;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="color"] {
+    display: none;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    padding: 10px;
+}
+
+.num {
+    border: 1px solid black;
+}
+
+select {
+    border: 1px solid black;
+}
+
+input[type="color"] {
+    width: 0;
+    height: 0;
+    border: none;
+    visibility: hidden;
+}
+
+.fx {
+    border: 1px solid black;
+    flex-grow: 1;
+    padding: 5px;
+}
+
+#cell-state {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    margin-left: 5px;
+    align-items: center;
+}
+
+#active-cell {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: coral;
+}
+
+#export {
+    font-size: 28px;
+    cursor: pointer;
+}
