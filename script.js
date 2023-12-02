@@ -37,7 +37,6 @@ for (let i = 1; i <= 100; i++) {
         newCell.contentEditable = "true";
         newCell.id = `${String.fromCharCode(64 + j)}${i}`;
         newCell.addEventListener("focus", onFocusCell);
-        newCell.addEventListener("input", onchangeCellText);
         newRow.appendChild(newCell);
     }
 
@@ -85,15 +84,13 @@ function applyStyles(styles) {
 
     const ActiveCell = document.getElementById(activeCellId);
     ActiveCell.style.color = styles.textcolor;
+    ActiveCell.style.textAlign = styles.align;
     ActiveCell.style.backgroundColor = styles.bgcolor;
     ActiveCell.style.fontWeight = styles.isBold ? "600" : "400";
     ActiveCell.style.fontFamily = styles.fontfamily;
     ActiveCell.style.fontSize = styles.fontSize;
     ActiveCell.style.textDecoration = styles.isunderline ? "underline" : "none";
     ActiveCell.style.fontStyle = styles.isitalic ? "italic" : "normal";
-
-    // Set text alignment based on the selected option
-    ActiveCell.style.textAlign = styles.align || "left";
 
     state[activeCellId] = { ...styles, text: ActiveCell.innerText };
 }
@@ -120,11 +117,15 @@ function resetform(styles) {
     form.align.value = styles.align;
 }
 
-function onchangeCellText(event) {
-    let changedText = event.target.innerText;
-    if (state[activeCellId]) {
-        state[activeCellId].text = changedText;
-    } else {
-        state[activeCellId] = { ...defaultStyles, text: changedText };
-    }
+
+
+function exportData() {
+    const jsonData = JSON.stringify(state);
+    const blob = new Blob([jsonData], { type: "text/plain" });
+
+    const url1 = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = "data.json";
+    link.href = url1;
+    link.click();
 }
